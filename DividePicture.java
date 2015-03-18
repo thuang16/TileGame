@@ -19,12 +19,12 @@ public class DividePicture extends SimplePicture
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = 0, toRow = startRow; 
+    for (int fromRow = startRow, toRow = startRow; 
          fromRow < endRow &&
          toRow < toPixels.length; 
          fromRow++, toRow++)
     {
-      for (int fromCol = 0, toCol = startCol; 
+      for (int fromCol = endRow, toCol = endRow; 
            fromCol < endCol &&
            toCol < toPixels[0].length;  
            fromCol++, toCol++)
@@ -35,12 +35,43 @@ public class DividePicture extends SimplePicture
       }
     }   
   }
-  public void divide1()
+  public void divideTile(int tile)
   {
     DividePicture beach = new DividePicture("beach.jpg");
     Pixel[][] pixels = beach.getPixels2D();
+    if (tile == 1){
     this.divide(beach,0,0,pixels.length/3,pixels[0].length/3);
     this.write("tile 1.jpg");
+    }
+    if (tile == 2){
+    this.divide(beach,0,pixels[0].length/3,pixels.length/3,pixels[0].length/3*2);
+    this.write("tile 2.jpg");
+    }
+    if (tile == 3){
+    this.divide(beach,0,pixels[0].length/3*2,pixels.length/3,pixels[0].length);
+    this.write("tile 3.jpg");
+    }
+     if (tile == 4){
+    this.divide(beach,pixels.length/3,0,pixels.length/3*2,pixels[0].length/3);
+    this.write("tile 4.jpg");
+    }
+     if (tile == 5){
+    this.divide(beach,pixels.length/3,pixels[0].length/3,pixels.length*2/3,pixels[0].length*2/3);
+    this.write("tile 5.jpg");
+    }
+     if (tile == 6){
+    this.divide(beach,pixels.length/3,pixels[0].length/3*2,pixels.length/3*2,pixels[0].length);
+    this.write("tile 6.jpg");
+    }
+     if (tile == 7){
+    this.divide(beach,pixels.length/3*2,0,pixels.length,pixels[0].length/3);
+    this.write("tile 7.jpg");
+    }
+      if (tile == 8){
+    this.divide(beach,pixels.length*2/3,pixels[0].length/3,pixels.length,pixels[0].length*2/3);
+    this.write("tile 8.jpg");
+    }
+    
 }
    
 }
