@@ -1,0 +1,29 @@
+import Java.util.Random;
+
+public class Board 
+{
+  public static void board()
+  {
+ 
+   int[][] theBoard =  {{1,2,3},
+                       {4,5,6},
+                       {7,8,0}};
+ 
+   }
+  public int direction(int row, int col)
+  {
+    Random direction = new Random();
+    private int [] directions1{1,2,3,4};
+    private int [] directions2{1,2,3,4};
+        if 
+  public void shuffle(){
+
+    for(int row= 0; row<3; row++){
+      for(int col=0; col<3; col++){
+        if( theBoard[row][col] == 0)
+        {
+          int temp == 
+    
+  }
+}
+  
