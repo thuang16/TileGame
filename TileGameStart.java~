@@ -1,0 +1,40 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class TileGameStart extends JFrame implements ActionListener
+{
+  private JButton startGame;
+  private boolean start;
+  
+  public TileGameStart()
+  {
+     JPanel panel = new JPanel();
+      getContentPane().add(panel);    
+      panel.setLayout(null);
+     
+      JLabel intro = new JLabel("Sliding Puzzle Game by Tingxuan Huang. Press Start Game to Play");
+        intro.setBounds(90,30,500,30);
+        panel.add(intro);
+        
+      start = new JButton("Start Game");
+      start.setBounds(120,30,500,30);
+      start.addActionListener(this);
+      panel.add(start);
+      
+      setTitle("Tile Game");
+      setSize(400, 400);
+      setLocationRelativeTo(null);
+      setVisible(true);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      
+  }
+      
+      public void actionPerformed(ActionEvent e)
+      {
+        if (e.getSource == startGame)
+        {
+          start = true;
+        }
+          

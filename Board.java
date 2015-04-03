@@ -1,4 +1,10 @@
 import java.util.Random;
+import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
 
 public class Board 
 {
