@@ -1,7 +1,3 @@
-import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.event.*;
-
 
 public class TileGame
 {
