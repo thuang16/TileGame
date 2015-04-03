@@ -18,6 +18,14 @@ public class TileGameStart extends JFrame implements ActionListener
         intro.setBounds(60,80,200,30);
         panel.add(intro);
         
+      JLabel gameName = new JLabel("Sliding Tiles Game");
+        gameName.setBounds(60,20,200,20);
+        panel.add(gameName);
+        
+        JLabel myName = new JLabel("By Tingxuan Huang");
+        myName.setBounds(60,40,200,20);
+        panel.add(myName);
+        
       startGame = new JButton("Start Game");
       startGame.setBounds(50,110,200,80);
       startGame.addActionListener(this);
