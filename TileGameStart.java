@@ -35,7 +35,8 @@ public class TileGameStart extends JFrame implements ActionListener
       {
         if (e.getSource() == startGame)
         {
-          start = true;
+          Board newGame = new Board();
+          this.dispose();
         }
       }
       public boolean getStart()

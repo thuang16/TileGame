@@ -36,7 +36,7 @@ try {
 } catch (IOException e) {
 }
 
-    shuffle = new JButton("Shuffle");
+    shuffle = new JButton("Click to Shuffle");
     shuffle.setBounds(50,50,150,30);
     shuffle.addActionListener(this);
     panel.add(shuffle);
@@ -50,9 +50,10 @@ try {
     panel.add(count);
     
      win = new JLabel();
-     win.setBounds (20, 80, 250, 20);
+     win.setBounds (50, 10, 500, 20);
     
     setBoard();
+
 
     
      setTitle("Tile Game");
@@ -208,7 +209,7 @@ public void addTileListener()
    {
      if(theBoard[row-1][col].blankTile())
      {
-       theBoard[row-1][col].tileSwap(theBoard[row][col]);
+       theBoard[row][col].tileSwap(theBoard[row-1][col]);
        return true;
      }
    }
@@ -216,7 +217,7 @@ public void addTileListener()
    {
      if(theBoard[row+1][col].blankTile())
      {
-       theBoard[row+1][col].tileSwap(theBoard[row][col]);
+       theBoard[row][col].tileSwap(theBoard[row+1][col]);
        return true;
      }
    }
@@ -224,7 +225,7 @@ public void addTileListener()
    {
      if(theBoard[row][col-1].blankTile())
      {
-       theBoard[row][col-1].tileSwap(theBoard[row][col]);
+       theBoard[row][col].tileSwap(theBoard[row][col-1]);
        return true;
      }
    }
@@ -232,10 +233,11 @@ public void addTileListener()
    {
      if(theBoard[row][col+1].blankTile())
      {
-       theBoard[row][col+1].tileSwap(theBoard[row][col]);
+       theBoard[row][col].tileSwap(theBoard[row][col+1]);
        return true;
      }
    }
+  
    return false;
   }
     
@@ -246,6 +248,8 @@ public void addTileListener()
    {
      shuffleTiles();
      addTileListener();
+     panel.remove(shuffle);
+     panel.repaint();
    }
               
    for(int row = 0; row < 3; row++)
@@ -259,10 +263,21 @@ public void addTileListener()
       countNum++;
       count.setText("Number of Moves: " + countNum);
      }
-      if (winCheck() == true)
+      if (winCheck() == true && countNum > 0)
       {
         win.setText("Congratulations! You have reconstructed the toast");
         panel.add(win);
+        panel.remove(instruction);
+        panel.repaint();
+        
+        for(int row1 = 0; row1 < 3; row1++)
+{
+  for(int col1 = 0; col1 < 3; col1++)
+  {
+   theBoard[row1][col1].removeActionListener(this);
+  }
+        }
+        
         
       }
     }
