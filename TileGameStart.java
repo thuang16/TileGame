@@ -14,17 +14,17 @@ public class TileGameStart extends JFrame implements ActionListener
       getContentPane().add(panel);    
       panel.setLayout(null);
      
-      JLabel intro = new JLabel("Sliding Tile Game by Tingxuan Huang. Press Start Game to Play");
-        intro.setBounds(90,30,100,30);
+      JLabel intro = new JLabel("Press Start Game to Play");
+        intro.setBounds(60,80,200,30);
         panel.add(intro);
         
       startGame = new JButton("Start Game");
-      startGame.setBounds(120,80,200,80);
+      startGame.setBounds(50,110,200,80);
       startGame.addActionListener(this);
       panel.add(startGame);
       
       setTitle("Tile Game");
-      setSize(400, 400);
+      setSize(300, 300);
       setLocationRelativeTo(null);
       setVisible(true);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,7 +38,6 @@ public class TileGameStart extends JFrame implements ActionListener
           start = true;
         }
       }
-      
       public boolean getStart()
       {
         return start;
