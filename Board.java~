@@ -249,7 +249,12 @@ public void addTileListener()
      shuffleTiles();
      addTileListener();
      panel.remove(shuffle);
+     panel.add(instruction);
+     panel.remove(win);
      panel.repaint();
+     countNum = 0;
+     count.setText("Number of Moves: " + countNum);
+     
    }
               
    for(int row = 0; row < 3; row++)
@@ -268,6 +273,8 @@ public void addTileListener()
         win.setText("Congratulations! You have reconstructed the toast");
         panel.add(win);
         panel.remove(instruction);
+        shuffle.setText("New Game");
+        panel.add(shuffle);
         panel.repaint();
         
         for(int row1 = 0; row1 < 3; row1++)

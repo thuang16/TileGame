@@ -12,7 +12,8 @@ public class Tiles extends JButton
   private boolean blank = false;
   private int tileIndex;
   private int solution;
-  public Tiles(BufferedImage image, int index,boolean setBlank)
+  
+  public Tiles(BufferedImage image, int index,boolean setBlank) //sets the image, gives the correct index and indicates if it's blank
   {
    tile = new ImageIcon(image);
    setIcon(tile);
@@ -20,7 +21,7 @@ public class Tiles extends JButton
    solution = index;
    blank = setBlank;
 }
-  public void tileSwap(Tiles white)
+  public void tileSwap(Tiles white) //exchanges the image, index and blank indicator of the tile with the blank one
   {
     ImageIcon temp = white.getTile();
     white.setTile(this.getTile());
