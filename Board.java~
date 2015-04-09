@@ -20,19 +20,19 @@ public class Board extends JFrame implements ActionListener
   private JLabel win;
   
   
-  public Board()
+  public Board() //creates panel, adds text and buttons
   {
    panel = new JPanel();
     getContentPane().add(panel);    
     panel.setLayout(null);
     
         try {
-    toast = ImageIO.read(new File("toast.jpg"));
+    toast = ImageIO.read(new File("toast.jpg")); //loads toast image
 } catch (IOException e) {
 }
 
 try {
-    white = ImageIO.read(new File("White.jpg"));
+    white = ImageIO.read(new File("White.jpg")); // loads blank image
 } catch (IOException e) {
 }
 
@@ -65,7 +65,7 @@ try {
    
   }
 
-public void setBoard()
+public void setBoard() //makes the board by creating a 2d array of Tiles which are JButtons
 {
   theBoard = new Tiles[3][3];
   int index = 1;
@@ -74,14 +74,14 @@ public void setBoard()
   for(int col = 0; col < 3; col++)
   {
    
-    if(row == 2 && col == 2)
+    if(row == 2 && col == 2) // sets the bottom corner as a white tile
     {
     theBoard[row][col] = new Tiles(white.getSubimage(500/3*row,500/3*col,500/3,500/3), 9,true);
     theBoard[row][col].setBounds(((row+1)*500/3) -50, (col+1)*500/3 -50 , 500/3, 500/3); 
     panel.add(theBoard[row][col]);  
     
     }
-    else
+    else //sets all the other as parts of the toast image
     {
         theBoard[row][col] = new Tiles(toast.getSubimage(500/3*row,500/3*col,500/3,500/3), index,false);
     theBoard[row][col].setBounds(((row+1)*500/3) -50, (col+1)*500/3 -50 , 500/3, 500/3);
@@ -92,7 +92,7 @@ public void setBoard()
   }
 }
 
-public void addTileListener()
+public void addTileListener() //adds mouse listener to all the tiles
 {
   for(int row = 0; row < 3; row++)
   {
@@ -104,7 +104,7 @@ public void addTileListener()
 }
 
 
-  public String direction()
+  public String direction() // returns random direction, used to shuffle board
   {
       if (Math.random()< .5)
       {
@@ -122,9 +122,9 @@ public void addTileListener()
       }
   }
   
-  public void shuffleTiles()
-  {
-    int shuffleCount = 0;
+  public void shuffleTiles() // shuffles tiles around 500 times by moving the blank tile around.
+  {                          // if it the blank tile can't go in a direction, it goes to th opposite
+    int shuffleCount = 0;    // for example, if it's supposed to move right, but it can't, it moves left
     while(shuffleCount < 500)
     {
     for(int row= 0; row<3; row++){
@@ -187,23 +187,22 @@ public void addTileListener()
   
   
  
-  public boolean winCheck()
+  public boolean winCheck() // checks the winning condition by comparing the index of each tile with the correct index
   {
-    boolean won = true;
   for(int row = 0; row < 3; row++)
 {
   for(int col = 0; col < 3; col++)
   {
     if (theBoard[row][col].getIndex() != theBoard[row][col].getSolution())
     {
-      won = false;
+      return false;
     }
   }
   }
-    return won;
+    return true;
   }
   
-  public boolean checkNextTo(int row, int col)
+  public boolean checkNextTo(int row, int col) //checks if a tile is next to the blank tile, if it is, it swaps the two
   {
    if(row != 0)
    {
@@ -244,7 +243,7 @@ public void addTileListener()
     
   public void actionPerformed(ActionEvent e)
   { 
-   if (e.getSource() == shuffle)
+   if (e.getSource() == shuffle) // if shuffle is clicked, it shuffles the tile, adds listeners, and removes itself
    {
      shuffleTiles();
      addTileListener();
@@ -261,19 +260,19 @@ public void addTileListener()
 {
   for(int col = 0; col < 3; col++)
   {
-    if(e.getSource() == theBoard[row][col])
+    if(e.getSource() == theBoard[row][col])// checks each tile to see if it's clicked and swaps if possible.
     {
      if(checkNextTo(row,col)==true)
      {
       countNum++;
       count.setText("Number of Moves: " + countNum);
      }
-      if (winCheck() == true && countNum > 0)
+      if (winCheck() == true && countNum > 0) // checks win condition each time
       {
-        win.setText("Congratulations! You have reconstructed the toast");
+        win.setText("Congratulations! You have reconstructed the toast");//winning statement
         panel.add(win);
         panel.remove(instruction);
-        shuffle.setText("New Game");
+        shuffle.setText("New Game"); // renames shuffle button to new game
         panel.add(shuffle);
         panel.repaint();
         
@@ -281,7 +280,7 @@ public void addTileListener()
 {
   for(int col1 = 0; col1 < 3; col1++)
   {
-   theBoard[row1][col1].removeActionListener(this);
+   theBoard[row1][col1].removeActionListener(this); // takes away listener if won, so tiles can't be moved.
   }
         }
         

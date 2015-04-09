@@ -18,6 +18,7 @@ public class Board extends JFrame implements ActionListener
   private JLabel count;
   private int countNum = 0;
   private JLabel win;
+  private int picNum = (int)(Math.random() * 4) + 1;
   
   
   public Board() //creates panel, adds text and buttons
@@ -26,10 +27,34 @@ public class Board extends JFrame implements ActionListener
     getContentPane().add(panel);    
     panel.setLayout(null);
     
+        if(picNum == 1)
+     {
         try {
-    toast = ImageIO.read(new File("toast.jpg")); //loads toast image
+    toast = ImageIO.read(new File("toast1.jpg")); //loads toast image
 } catch (IOException e) {
 }
+     }
+     if(picNum == 2)
+     {
+        try {
+    toast = ImageIO.read(new File("toast2.jpg")); //loads toast image
+} catch (IOException e) {
+}
+     }
+     if(picNum == 3)
+     {
+        try {
+    toast = ImageIO.read(new File("toast3.jpg")); //loads toast image
+} catch (IOException e) {
+}
+     }
+     if(picNum == 4)
+     {
+        try {
+    toast = ImageIO.read(new File("toast4.jpg")); //loads toast image
+} catch (IOException e) {
+}
+     }
 
 try {
     white = ImageIO.read(new File("White.jpg")); // loads blank image
@@ -51,13 +76,11 @@ try {
     
      win = new JLabel();
      win.setBounds (50, 10, 500, 20);
-    
+     
     setBoard();
-
-
     
      setTitle("Tile Game");
-    setSize(800,800);
+    setSize(800,700);
     setLocationRelativeTo(null);
     setVisible(true);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -241,26 +264,28 @@ public void addTileListener() //adds mouse listener to all the tiles
   }
     
     
-  public void actionPerformed(ActionEvent e)
+  public void actionPerformed(ActionEvent event)
   { 
-   if (e.getSource() == shuffle) // if shuffle is clicked, it shuffles the tile, adds listeners, and removes itself
+   if (event.getSource() == shuffle) // if shuffle is clicked, it shuffles the tile, adds listeners, and removes itself
    {
      shuffleTiles();
      addTileListener();
-     panel.remove(shuffle);
      panel.add(instruction);
      panel.remove(win);
+     shuffle.setText("Restart");
      panel.repaint();
      countNum = 0;
      count.setText("Number of Moves: " + countNum);
      
    }
+
+     
               
    for(int row = 0; row < 3; row++)
 {
   for(int col = 0; col < 3; col++)
   {
-    if(e.getSource() == theBoard[row][col])// checks each tile to see if it's clicked and swaps if possible.
+    if(event.getSource() == theBoard[row][col])// checks each tile to see if it's clicked and swaps if possible.
     {
      if(checkNextTo(row,col)==true)
      {
@@ -282,16 +307,17 @@ public void addTileListener() //adds mouse listener to all the tiles
   {
    theBoard[row1][col1].removeActionListener(this); // takes away listener if won, so tiles can't be moved.
   }
-        }
+ }
         
         
       }
     }
   }
-     }
-    }
+   }
   }
-   
+}
+
+
               
              
 

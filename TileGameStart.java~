@@ -8,7 +8,7 @@ public class TileGameStart extends JFrame implements ActionListener
   private JButton startGame;
   private boolean start;
   
-  public TileGameStart()
+  public TileGameStart() // adds text and start button to panel
   {
      JPanel panel = new JPanel();
       getContentPane().add(panel);    
@@ -41,15 +41,15 @@ public class TileGameStart extends JFrame implements ActionListener
       
       public void actionPerformed(ActionEvent e)
       {
-        if (e.getSource() == startGame)
+        if (e.getSource() == startGame) // when start game is clicked, creates a new Board and closes the start screen
         {
           Board newGame = new Board();
           this.dispose();
         }
       }
-      public boolean getStart()
-      {
-        return start;
-      }
-}
+
           
+public static void main(String args []){
+  TileGameStart newGame = new TileGameStart();
+}
+}

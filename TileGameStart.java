@@ -47,5 +47,9 @@ public class TileGameStart extends JFrame implements ActionListener
           this.dispose();
         }
       }
-}
+
           
+public static void main(String args []){
+  TileGameStart newGame = new TileGameStart();
+}
+}
