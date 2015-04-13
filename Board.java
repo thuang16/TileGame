@@ -18,7 +18,7 @@ public class Board extends JFrame implements ActionListener
   private JLabel count;
   private int countNum = 0;
   private JLabel win;
-  private int picNum = (int)(Math.random() * 4) + 1;
+  private int picNum = (int)(Math.random() * 4) + 1; // picNum is set to a random number between 1 and 4
   
   
   public Board() //creates panel, adds text and buttons
@@ -30,28 +30,28 @@ public class Board extends JFrame implements ActionListener
         if(picNum == 1)
      {
         try {
-    toast = ImageIO.read(new File("toast1.jpg")); //loads toast image
+    toast = ImageIO.read(new File("toast1.jpg")); //loads toast image 1
 } catch (IOException e) {
 }
      }
      if(picNum == 2)
      {
         try {
-    toast = ImageIO.read(new File("toast2.jpg")); //loads toast image
+    toast = ImageIO.read(new File("toast2.jpg")); //loads toast image 2
 } catch (IOException e) {
 }
      }
      if(picNum == 3)
      {
         try {
-    toast = ImageIO.read(new File("toast3.jpg")); //loads toast image
+    toast = ImageIO.read(new File("toast3.jpg")); //loads toast image 3
 } catch (IOException e) {
 }
      }
      if(picNum == 4)
      {
         try {
-    toast = ImageIO.read(new File("toast4.jpg")); //loads toast image
+    toast = ImageIO.read(new File("toast4.jpg")); //loads toast image 4
 } catch (IOException e) {
 }
      }

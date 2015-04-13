@@ -50,6 +50,6 @@ public class TileGameStart extends JFrame implements ActionListener
 
           
 public static void main(String args []){
-  TileGameStart newGame = new TileGameStart();
+  TileGameStart newGame = new TileGameStart(); // main method and creates the start screen
 }
 }

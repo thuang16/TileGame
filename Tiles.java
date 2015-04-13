@@ -33,37 +33,37 @@ public class Tiles extends JButton
     
        }
   
-  public ImageIcon getTile()
+  public ImageIcon getTile()// gets the image
   {
     return tile;
   }
   
-  public void setTile(ImageIcon newTile)
+  public void setTile(ImageIcon newTile) // sets a new image
   {
     tile = newTile;
     setIcon(tile);
   }
-  public boolean blankTile()
+  public boolean blankTile()// returns if the tile is blank or not
   {
     return blank;
   }
-  public void setBlankTile()
+  public void setBlankTile()//sets a tile as blank
   {
     blank = true;
   }
-  public void unSetBlankTile()
+  public void unSetBlankTile()//sets a tile as not blank
   {
     blank = false;
   }
-  public int getIndex()
+  public int getIndex()// gets the index
   {
     return tileIndex;
   }
-  public void setIndex(int newIndex)
+  public void setIndex(int newIndex)// sets a new index
   {
     tileIndex = newIndex;
   }
-  public int getSolution()
+  public int getSolution()// gets the solution to the tile
   {
     return solution;
   }
